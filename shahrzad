@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phoenix T-Shirt Mockup</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C8A96E;
+    --teal: #5B9EA0;
+    --rust: #B8735A;
+    --black: #0A0A0C;
+  }
+
+  body {
+    background: #0f0f13;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    padding: 30px 20px;
+  }
+
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: rgba(200,169,110,0.5);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  /* Color Switcher */
+  .color-switcher {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 36px;
+    align-items: center;
+  }
+
+  .color-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    margin-left: 8px;
+  }
+
+  .color-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .color-btn.active::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+  }
+
+  .color-btn:hover { transform: scale(1.1); }
+
+  /* Mockup Container */
+  .mockup-container {
+    position: relative;
+    width: 360px;
+    height: 420px;
+  }
+
+  /* T-SHIRT SVG shape */
+  .tshirt-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tshirt-wrap svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.7));
+  }
+
+  /* Design overlay on shirt */
+  .design-overlay {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 155px;
+    height: 190px;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .design-overlay svg {
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+    opacity: 0.92;
+  }
+
+  /* Bottom info */
+  .shirt-info {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .shirt-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 6px;
+    color: var(--gold);
+  }
+
+  .shirt-detail {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+  }
+
+  .tag-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border: 1px solid rgba(91,158,160,0.3);
+    color: var(--teal);
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+
+  /* Fold/fabric texture lines on shirt */
+  .fabric-line {
+    stroke: rgba(0,0,0,0.12);
+    stroke-width: 1;
+    fill: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-title">Fenix Sport · Apparel Mockup</div>
+
+<!-- Color Switcher -->
+<div class="color-switcher">
+  <span class="color-label">رنگ:</span>
+  <div class="color-btn active" style="background:#0A0A0C;border-color:#333" onclick="setColor('black','#0A0A0C','#1a1a22','#2a2a35')" id="btn-black"></div>
+  <div class="color-btn" style="background:#1a2535" onclick="setColor('navy','#0d1825','#1a2535','#253346')" id="btn-navy"></div>
+  <div class="color-btn" style="background:#2a1810" onclick="setColor('brown','#1a0e08','#2a1810','#3a2418')" id="btn-brown"></div>
+  <div class="color-btn" style="background:#e8e4dc" onclick="setColor('cream','#d4cfc6','#e8e4dc','#f0ece4')" id="btn-cream"></div>
+</div>
+
+<!-- Mockup -->
+<div class="mockup-container">
+
+  <!-- T-Shirt shape -->
+  <div class="tshirt-wrap">
+    <svg viewBox="0 0 360 420" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" id="grad-stop-1" style="stop-color:#1a1a22"/>
+          <stop offset="100%" id="grad-stop-2" style="stop-color:#0A0A0C"/>
+        </linearGradient>
+        <linearGradient id="shirtLight" x1="30%" y1="0%" x2="70%" y2="100%">
+          <stop offset="0%" style="stop-color:rgba(255,255,255,0.06)"/>
+          <stop offset="50%" style="stop-color:rgba(255,255,255,0)"/>
+          <stop offset="100%" style="stop-color:rgba(0,0,0,0.2)"/>
+        </linearGradient>
+        <!-- Neck shadow -->
+        <radialGradient id="neckShadow" cx="50%" cy="0%" r="40%">
+          <stop offset="0%" style="stop-color:rgba(0,0,0,0.3)"/>
+          <stop offset="100%" style="stop-color:rgba(0,0,0,0)"/>
+        </radialGradient>
+        <filter id="shirtShadow">
+          <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="rgba(0,0,0,0.5)"/>
+        </filter>
+      </defs>
+
+      <!-- Main shirt body -->
+      <path id="shirt-body"
+        d="M 100,30
+           C 115,28 135,22 148,18
+           C 152,30 158,42 180,46
+           C 202,42 208,30 212,18
+           C 225,22 245,28 260,30
+           L 310,80
+           L 275,110
+           L 268,110
+           L 265,400
+           L 95,400
+           L 92,110
+           L 85,110
+           L 50,80
+           Z"
+        fill="url(#shirtGrad)"
+        filter="url(#shirtShadow)"
+      />
+
+      <!-- Light overlay -->
+      <path
+        d="M 100,30
+           C 115,28 135,22 148,18
+           C 152,30 158,42 180,46
+           C 202,42 208,30 212,18
+           C 225,22 245,28 260,30
+           L 310,80
+           L 275,110
+           L 265,400
+           L 95,400
+           L 92,110
+           L 50,80
+           Z"
+        fill="url(#shirtLight)"
+      />
+
+      <!-- Neck shadow overlay -->
+      <ellipse cx="180" cy="46" rx="80" ry="30" fill="url(#neckShadow)"/>
+
+      <!-- Sleeve wrinkles left -->
+      <path class="fabric-line" d="M 85,75 C 75,80 68,90 72,100"/>
+      <path class="fabric-line" d="M 78,82 C 65,88 60,98 65,108"/>
+
+      <!-- Sleeve wrinkles right -->
+      <path class="fabric-line" d="M 275,75 C 285,80 292,90 288,100"/>
+      <path class="fabric-line" d="M 282,82 C 295,88 300,98 295,108"/>
+
+      <!-- Body wrinkles -->
+      <path class="fabric-line" d="M 140,200 C 138,230 140,270 142,300"/>
+      <path class="fabric-line" d="M 220,200 C 222,230 220,270 218,300"/>
+      <path class="fabric-line" d="M 160,350 C 162,365 165,375 168,385"/>
+      <path class="fabric-line" d="M 200,350 C 198,365 195,375 192,385"/>
+
+      <!-- Collar rib -->
+      <path
+        d="M 148,18 C 152,30 158,42 180,46 C 202,42 208,30 212,18"
+        fill="none"
+        id="collar-line"
+        stroke-width="6"
+        stroke-linecap="round"
+        style="stroke:#111116"
+      />
+      <path
+        d="M 150,18 C 154,29 160,40 180,44 C 200,40 206,29 210,18"
+        fill="none"
+        stroke-width="3"
+        stroke-linecap="round"
+        style="stroke:#1e1e28;opacity:0.8"
+      />
+
+      <!-- Shoulder seams -->
+      <path d="M 148,18 L 105,35" fill="none" style="stroke:rgba(0,0,0,0.2);stroke-width:1.5"/>
+      <path d="M 212,18 L 255,35" fill="none" style="stroke:rgba(0,0,0,0.2);stroke-width:1.5"/>
+
+      <!-- Side seams -->
+      <path d="M 92,110 L 95,400" fill="none" style="stroke:rgba(0,0,0,0.15);stroke-width:1.5"/>
+      <path d="M 268,110 L 265,400" fill="none" style="stroke:rgba(0,0,0,0.15);stroke-width:1.5"/>
+
+      <!-- Bottom hem -->
+      <path d="M 95,395 L 265,395" fill="none" style="stroke:rgba(0,0,0,0.2);stroke-width:2"/>
+
+      <!-- Small brand tag at bottom -->
+      <rect x="168" y="388" width="24" height="8" rx="1" fill="rgba(255,255,255,0.06)"/>
+    </svg>
+  </div>
+
+  <!-- Phoenix Design on shirt -->
+  <div class="design-overlay">
+    <svg viewBox="0 0 340 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="dGold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#C8A96E"/>
+          <stop offset="100%" style="stop-color:#E8C97E"/>
+        </linearGradient>
+        <filter id="dGlow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Halo -->
+      <circle cx="170" cy="110" r="75" fill="none" stroke="#C8A96E" stroke-width="1.5" opacity="0.6" filter="url(#dGlow)"/>
+      <!-- Rays -->
+      <g opacity="0.4" stroke="#C8A96E" stroke-width="0.8">
+        <line x1="170" y1="35" x2="170" y2="10"/>
+        <line x1="196" y1="40" x2="208" y2="18"/>
+        <line x1="218" y1="56" x2="236" y2="44"/>
+        <line x1="224" y1="84" x2="248" y2="80"/>
+        <line x1="144" y1="40" x2="132" y2="18"/>
+        <line x1="122" y1="56" x2="104" y2="44"/>
+        <line x1="116" y1="84" x2="92" y2="80"/>
+      </g>
+
+      <!-- Left wing -->
+      <path fill="rgba(200,169,110,0.15)" stroke="#C8A96E" stroke-width="1" d="M170,160 L60,120 L30,180 L80,190 Z"/>
+      <path fill="rgba(200,169,110,0.12)" stroke="#C8A96E" stroke-width="1" d="M170,175 L45,155 L20,220 L75,215 Z"/>
+      <path fill="rgba(200,169,110,0.1)" stroke="#C8A96E" stroke-width="1" d="M170,190 L50,200 L35,260 L85,245 Z"/>
+      <path fill="rgba(200,169,110,0.08)" stroke="#C8A96E" stroke-width="0.8" d="M170,200 L65,240 L60,300 L100,275 Z"/>
+      <path fill="rgba(91,158,160,0.12)" stroke="#5B9EA0" stroke-width="1" d="M170,160 L90,130 L70,185 L115,180 Z"/>
+      <path fill="rgba(91,158,160,0.1)" stroke="#5B9EA0" stroke-width="1" d="M170,175 L85,165 L70,220 L120,210 Z"/>
+      <path fill="rgba(91,158,160,0.08)" stroke="#5B9EA0" stroke-width="1" d="M170,190 L90,210 L85,260 L125,245 Z"/>
+      <path fill="rgba(184,115,90,0.12)" stroke="#B8735A" stroke-width="1" d="M170,165 L120,145 L110,190 L148,182 Z"/>
+      <path fill="rgba(184,115,90,0.1)" stroke="#B8735A" stroke-width="1" d="M170,180 L118,175 L112,220 L150,212 Z"/>
+
+      <!-- Right wing -->
+      <path fill="rgba(200,169,110,0.15)" stroke="#C8A96E" stroke-width="1" d="M170,160 L280,120 L310,180 L260,190 Z"/>
+      <path fill="rgba(200,169,110,0.12)" stroke="#C8A96E" stroke-width="1" d="M170,175 L295,155 L320,220 L265,215 Z"/>
+      <path fill="rgba(200,169,110,0.1)" stroke="#C8A96E" stroke-width="1" d="M170,190 L290,200 L305,260 L255,245 Z"/>
+      <path fill="rgba(200,169,110,0.08)" stroke="#C8A96E" stroke-width="0.8" d="M170,200 L275,240 L280,300 L240,275 Z"/>
+      <path fill="rgba(91,158,160,0.12)" stroke="#5B9EA0" stroke-width="1" d="M170,160 L250,130 L270,185 L225,180 Z"/>
+      <path fill="rgba(91,158,160,0.1)" stroke="#5B9EA0" stroke-width="1" d="M170,175 L255,165 L270,220 L220,210 Z"/>
+      <path fill="rgba(91,158,160,0.08)" stroke="#5B9EA0" stroke-width="1" d="M170,190 L250,210 L255,260 L215,245 Z"/>
+      <path fill="rgba(184,115,90,0.12)" stroke="#B8735A" stroke-width="1" d="M170,165 L220,145 L230,190 L192,182 Z"/>
+      <path fill="rgba(184,115,90,0.1)" stroke="#B8735A" stroke-width="1" d="M170,180 L222,175 L228,220 L190,212 Z"/>
+
+      <!-- Body -->
+      <path fill="rgba(200,169,110,0.08)" stroke="#C8A96E" stroke-width="1.2" d="M155,100 C155,90 165,82 170,80 C175,82 185,90 185,100 L192,160 C185,175 178,185 170,190 C162,185 155,175 148,160 Z"/>
+      <path fill="rgba(91,158,160,0.12)" stroke="#5B9EA0" stroke-width="1" d="M162,130 C162,124 168,120 170,119 C172,120 178,124 178,130 L175,150 C172,155 170,158 170,158 C170,158 168,155 165,150 Z"/>
+      <path fill="rgba(91,158,160,0.1)" stroke="#5B9EA0" stroke-width="1" d="M164,148 C164,142 168,138 170,137 C172,138 176,142 176,148 L174,162 L170,167 L166,162 Z"/>
+
+      <!-- Crest -->
+      <path fill="rgba(184,115,90,0.15)" stroke="#B8735A" stroke-width="1" d="M163,105 C158,92 160,78 165,68 C167,80 168,90 170,95 C172,90 173,80 175,68 C180,78 182,92 177,105 Z"/>
+      <path fill="rgba(184,115,90,0.12)" stroke="#B8735A" stroke-width="1" d="M170,68 C168,58 166,50 168,42 L170,55 L172,42 C174,50 172,58 170,68 Z"/>
+
+      <!-- Tail -->
+      <path fill="rgba(91,158,160,0.1)" stroke="#5B9EA0" stroke-width="1" d="M160,270 C150,290 140,320 130,350 C145,335 158,315 165,295 Z"/>
+      <path fill="rgba(91,158,160,0.12)" stroke="#5B9EA0" stroke-width="1" d="M165,275 C158,300 155,330 150,360 C162,340 168,310 170,290 Z"/>
+      <path fill="rgba(200,169,110,0.1)" stroke="#C8A96E" stroke-width="1" d="M170,278 C170,305 170,335 170,365 L170,290 Z"/>
+      <path fill="rgba(91,158,160,0.12)" stroke="#5B9EA0" stroke-width="1" d="M175,275 C182,300 185,330 190,360 C178,340 172,310 170,290 Z"/>
+      <path fill="rgba(91,158,160,0.1)" stroke="#5B9EA0" stroke-width="1" d="M180,270 C190,290 200,320 210,350 C195,335 182,315 175,295 Z"/>
+
+      <!-- Tail curls -->
+      <path fill="none" stroke="#5B9EA0" stroke-width="1.2" opacity="0.7" d="M130,350 C120,360 115,370 120,380 C125,388 135,385 140,375"/>
+      <path fill="none" stroke="#C8A96E" stroke-width="1.2" opacity="0.7" d="M150,360 C142,372 140,382 145,390 C150,396 160,392 162,382"/>
+      <path fill="none" stroke="#5B9EA0" stroke-width="1.2" opacity="0.7" d="M210,350 C220,360 225,370 220,380 C215,388 205,385 200,375"/>
+      <path fill="none" stroke="#C8A96E" stroke-width="1.2" opacity="0.7" d="M190,360 C198,372 200,382 195,390 C190,396 180,392 178,382"/>
+    </svg>
+  </div>
+</div>
+
+<!-- Info -->
+<div class="shirt-info">
+  <div class="shirt-name">SHAHRZAD</div>
+  <div class="shirt-detail">NMT · Phoenix Sport Collection SS26</div>
+  <div class="tag-row">
+    <div class="tag">Oversize Fit</div>
+    <div class="tag">100% Cotton</div>
+    <div class="tag">Unisex</div>
+  </div>
+</div>
+
+<script>
+  function setColor(name, dark, mid, light) {
+    document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('btn-' + name).classList.add('active');
+
+    const stop1 = document.getElementById('grad-stop-1');
+    const stop2 = document.getElementById('grad-stop-2');
+    const collar = document.getElementById('collar-line');
+
+    stop1.style.stopColor = mid;
+    stop2.style.stopColor = dark;
+    collar.style.stroke = dark === '#d4cfc6' ? '#c0bbb2' : '#111116';
+
+    // Adjust design blend for light shirts
+    const design = document.querySelector('.design-overlay svg');
+    if (name === 'cream') {
+      design.style.mixBlendMode = 'multiply';
+      design.style.opacity = '0.85';
+    } else {
+      design.style.mixBlendMode = 'screen';
+      design.style.opacity = '0.92';
+    }
+  }
+</script>
+
+</body>
+</html>
